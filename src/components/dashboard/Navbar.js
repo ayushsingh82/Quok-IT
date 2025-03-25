@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-md px-6 py-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <h1 className="text-xl font-bold text-gray-800">Dashboard</h1>
+          <h1 className="text-xl font-bold text-gray-800">Overview</h1>
         </div>
         <div className="flex items-center gap-4">
           <button className="p-2 rounded-full hover:bg-gray-100">
