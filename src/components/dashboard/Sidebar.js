@@ -1,21 +1,34 @@
 'use client'
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import { IMAGES } from '@/mockdata';
 
 export default function Sidebar() {
   const [networkExpanded, setNetworkExpanded] = useState(true);
+  const [activeNetwork, setActiveNetwork] = useState('akash');
 
   return (
-    <div className="bg-white shadow-md w-64 flex flex-col h-screen">
-      {/* Top Section with User */}
-      <div className="p-6 border-b">
-        <div className="flex items-center space-x-3">
-          <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium">
-            U
+    <div className="shadow-md w-64 flex flex-col h-screen bg-surface" style={{ backgroundColor: 'var(--surface)' }}>
+      {/* Top Section with Logo */}
+      <div className="p-4 border-b" style={{ borderColor: 'var(--border-light)' }}>
+        <div className="flex items-center space-x-2">
+          <div className="relative h-6 w-6">
+            <Image
+              src="/logo.webp"
+              alt="Quok.it Logo"
+              width={24}
+              height={24}
+              priority
+              style={{ 
+                objectFit: 'contain',
+                objectPosition: 'left'
+              }}
+            />
           </div>
-          <div>
-            <h3 className="font-medium">Quok.it</h3>
-          </div>
+          <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+            Quok.it
+          </h3>
         </div>
       </div>
       
@@ -28,7 +41,11 @@ export default function Sidebar() {
           <li>
             <button 
               onClick={() => setNetworkExpanded(!networkExpanded)}
-              className="w-full flex items-center justify-between p-3 rounded-md text-gray-700 hover:bg-gray-50"
+              className="w-full flex items-center justify-between p-3 rounded-md transition-colors duration-200"
+              style={{ 
+                color: 'var(--foreground)',
+                ':hover': { backgroundColor: '#007b5f15' } // Light version of #007b5f
+              }}
             >
               <div className="flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -50,14 +67,32 @@ export default function Sidebar() {
             {networkExpanded && (
               <ul className="ml-8 mt-2 space-y-1">
                 <li>
-                  <a href="#" className="flex items-center space-x-3 p-2 rounded-md text-gray-700 hover:bg-gray-50">
+                  <button 
+                    onClick={() => setActiveNetwork('akash')}
+                    className="w-full flex items-center space-x-3 p-2 rounded-md transition-colors duration-200"
+                    style={{ 
+                      backgroundColor: activeNetwork === 'akash' ? 'var(--primary)' : 'transparent',
+                      color: activeNetwork === 'akash' ? 'white' : 'var(--foreground)',
+                      ':hover': { backgroundColor: activeNetwork === 'akash' ? 'var(--primary)' : '#007b5f15' }
+                    }}
+                  >
                     <span className="text-sm">Akash</span>
-                  </a>
+                  </button>
                 </li>
+              
+             
                 <li>
-                  <a href="#" className="flex items-center space-x-3 p-2 rounded-md text-gray-700 hover:bg-gray-50">
-                    <span className="text-sm">Node</span>
-                  </a>
+                  <button 
+                    onClick={() => setActiveNetwork('nvidia')}
+                    className="w-full flex items-center space-x-3 p-2 rounded-md transition-colors duration-200"
+                    style={{ 
+                      backgroundColor: activeNetwork === 'nvidia' ? 'var(--primary)' : 'transparent',
+                      color: activeNetwork === 'nvidia' ? 'white' : 'var(--foreground)',
+                      ':hover': { backgroundColor: activeNetwork === 'nvidia' ? 'var(--primary)' : '#007b5f15' }
+                    }}
+                  >
+                    <span className="text-sm">NVIDIA</span>
+                  </button>
                 </li>
               </ul>
             )}

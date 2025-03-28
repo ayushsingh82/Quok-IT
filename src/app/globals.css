@@ -1,2 +1,58 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f5f7; /* Soft neutral gray */
+  --foreground: #212529; /* Darker gray for high contrast */
+  --primary: #007b5f; /* Refined green - Quok.it brand color */
+  --primary-dark: #005f46; /* Deep green for hover */
+  --surface: #ffffff; /* White for cards */
+  --surface-dark: #e0e0e0; /* Slightly darker for sections */
+  --text-secondary: #6c757d; /* Cool muted gray */
+  --border-light: rgba(0, 0, 0, 0.08); /* Subtle border */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow for elevation */
+  --primary-hover: #007b5f15; /* Light green for hover states */
+}
+
+/* Apply colors to base elements */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Custom utility classes for our color scheme */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-dark) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.bg-surface {
+  background-color: var(--surface) !important;
+}
+
+.bg-surface-dark {
+  background-color: var(--surface-dark) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.border-light {
+  border-color: var(--border-light) !important;
+}
+
+.hover-primary:hover {
+  background-color: var(--primary-hover) !important;
+}
+
